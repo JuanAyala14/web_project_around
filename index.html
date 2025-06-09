@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio de Juan David Ayala en TripleTen"
+    />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Juan David Ayala" />
+    <link rel="stylesheet" href="./pages/index.css" />
+
+    <title>Around the USA</title>
+  </head>
+  <body>
+    <div class="page">
+      <div class="popup">
+        <div class="popup__container">
+          <button class="popup__button popup__button_close"></button>
+          <form class="popup__form">
+            <h2 class="popup__title">Edit Profile</h2>
+            <fieldset class="popup__content">
+              <label class="popup__label">
+                <input
+                  name="name"
+                  type="text"
+                  class="popup__input popup__input_name"
+                  placeholder="Name"
+                />
+              </label>
+              <label class="popup__label">
+                <input
+                  name="Profession"
+                  type="text"
+                  class="popup__input popup__input_profession"
+                  placeholder="Profession"
+                />
+              </label>
+              <button type="submit" class="popup__button popup__button_save">
+                Save
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <header class="header">
+        <img src="./images/Vector.svg" alt="logo" class="header__image" />
+      </header>
+      <main class="gallery">
+        <div class="gallery__profile">
+          <img
+            class="gallery__profile-image"
+            src="./images/profile.jpg"
+            alt="profile-image"
+          />
+          <div class="gallery__profile_container">
+            <p class="gallery__profile_name">Max Verstappen</p>
+            <p class="gallery__profile_profession">Racing Driver</p>
+            <button
+              type="button"
+              class="gallery__button gallery__profile_button_edit"
+            >
+              🖌
+            </button>
+          </div>
+          <button
+            type="button"
+            class="gallery__button gallery__profile_button_add"
+          >
+            🞣
+          </button>
+        </div>
+        <div class="gallery__grid">
+          <div class="gallery__card">
+            <img
+              class="gallery__image"
+              src="./images/florida.jpg"
+              alt="florida image"
+            />
+            <div class="gallery__content">
+              <p class="gallery__paragraph">Disney, Fl</p>
+              <button
+                type="button"
+                class="gallery__button gallery__button_like"
+              ></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__image"
+              src="./images/las-vegas.jpg"
+              alt="las veggas image"
+            />
+            <div class="gallery__content">
+              <p class="gallery__paragraph">Las Vegas, NV</p>
+              <button
+                type="button"
+                class="gallery__button gallery__button_like"
+              ></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__image"
+              src="./images/new-york.jpg"
+              alt="new york image"
+            />
+            <div class="gallery__content">
+              <p class="gallery__paragraph">New York, NY</p>
+              <button
+                type="button"
+                class="gallery__button gallery__button_like"
+              ></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__image"
+              src="./images/rushmore.jpg"
+              alt="rushmore image"
+            />
+            <div class="gallery__content">
+              <p class="gallery__paragraph">Mount Rushmore, SD</p>
+              <button
+                type="button"
+                class="gallery__button gallery__button_like"
+              ></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__image"
+              src="./images/san-francisco.jpg"
+              alt="san francisco image"
+            />
+            <div class="gallery__content">
+              <p class="gallery__paragraph">San Francisco, CA</p>
+              <button
+                type="button"
+                class="gallery__button gallery__button_like"
+              ></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__image"
+              src="./images/washington.jpg"
+              alt="washington image"
+            />
+            <div class="gallery__content">
+              <p class="gallery__paragraph">Washington, DC</p>
+              <button
+                type="button"
+                class="gallery__button gallery__button_like"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2025. Juan Ayala</p>
+      </footer>
+    </div>
+    <script src="./pages/index.js"></script>
+  </body>
+</html>
