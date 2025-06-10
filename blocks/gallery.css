@@ -10,7 +10,7 @@
   gap: 30px;
   padding-bottom: 50px;
 }
-.gallery__profile_container {
+.gallery__profile-container {
   max-width: 450px;
   display: grid;
   grid-column: 2 / 4;
@@ -26,7 +26,7 @@
   height: 100%;
   border-radius: 100%;
 }
-.gallery__profile_name {
+.gallery__profile-name {
   margin: 0;
   font-size: 38px;
   line-height: 48px;
@@ -34,19 +34,19 @@
   padding-top: 22px;
   grid-column: 1/4;
 }
-.gallery__profile_profession {
+.gallery__profile-profession {
   margin: 0;
   font-size: 18px;
   padding-bottom: 21px;
   grid-column: 1/4;
 }
-.gallery__profile_button_edit {
+.gallery__button-edit {
   width: 24px;
   height: 24px;
   align-self: end;
   margin-bottom: 7px;
 }
-.gallery__profile_button_add {
+.gallery__button-add {
   width: 150px;
   height: 50px;
   align-self: end;
@@ -142,27 +142,27 @@
     grid-row-gap: 30px;
     padding-bottom: 30px;
   }
-  .gallery__profile_container {
+  .gallery__profile-container {
     grid-column: 1 / 2;
     grid-row: 2;
     grid-template-rows: repeat(2, 20px);
   }
-  .gallery__profile_name {
+  .gallery__profile-name {
     font-size: 22px;
     padding: 0;
     line-height: normal;
   }
-  .gallery__profile_profession {
+  .gallery__profile-profession {
     padding: 0;
     font-size: 14px;
   }
-  .gallery__profile_button_edit {
+  .gallery__button-edit {
     width: 22px;
     height: 22px;
     margin: 0 0 0 16px;
     align-self: center;
   }
-  .gallery__profile_button_add {
+  .gallery__button-add {
     width: 100%;
   }
   .gallery__grid {
