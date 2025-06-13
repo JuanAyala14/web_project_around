@@ -174,3 +174,47 @@
     flex-wrap: wrap;
   }
 }
+@media screen and (min-width: 585px) and (max-width: 880px) {
+  .gallery {
+    max-width: 600px;
+    margin: auto;
+  }
+  .gallery__profile-name {
+    font-size: 30px;
+  }
+  .gallery__profile-profession {
+    font-size: 14px;
+  }
+  .gallery__grid {
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px 37px;
+  }
+  .gallery__card:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .gallery__card:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .gallery__card:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .gallery__card:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .gallery__card:nth-child(5) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .gallery__card:nth-child(6) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}

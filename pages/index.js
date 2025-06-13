@@ -6,8 +6,8 @@ function handleProfileFormSubmit(evt) {
 
   let nameInput = formElement.querySelector(".popup__input_name");
   let jobInput = formElement.querySelector(".popup__input_profession");
-  let profileName = document.querySelector("gallery__profile-name");
-  let profileAbout = document.querySelector("gallery__profile-profession");
+  let profileName = document.querySelector(".gallery__profile-name");
+  let profileAbout = document.querySelector(".gallery__profile-profession");
   profileName.textContent = nameInput.value;
   profileAbout.textContent = jobInput.value;
 

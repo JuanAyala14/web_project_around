@@ -6,10 +6,8 @@ function handleProfileFormSubmit(evt) {
 
   let nameInput = formElement.querySelector(".popup__input_name");
   let jobInput = formElement.querySelector(".popup__input_profession");
-  let profileName = document.getElementsByClassName("gallery__profile_name")[0];
-  let profileAbout = document.getElementsByClassName(
-    "gallery__profile_profession"
-  )[0];
+  let profileName = document.querySelector(".gallery__profile-name");
+  let profileAbout = document.querySelector(".gallery__profile-profession");
   profileName.textContent = nameInput.value;
   profileAbout.textContent = jobInput.value;
 
@@ -17,7 +15,7 @@ function handleProfileFormSubmit(evt) {
 }
 formElement.addEventListener("submit", handleProfileFormSubmit);
 
-let editButton = document.querySelector(".gallery__profile_button_edit");
+let editButton = document.querySelector(".gallery__button-edit");
 editButton.addEventListener("click", function () {
   container.classList.add("popup_open");
 });
