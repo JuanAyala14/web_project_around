@@ -18,26 +18,43 @@
       <div class="popup popup-edit">
         <div class="popup__container">
           <button class="popup__button popup__button_close"></button>
-          <form class="popup__form popup__form-edit">
+          <form class="popup__form popup__form-edit" novalidate>
             <h2 class="popup__title">Edit Profile</h2>
             <fieldset class="popup__content">
               <label class="popup__label">
                 <input
                   name="name"
                   type="text"
-                  class="popup__input popup__input_name"
+                  class="popup__input popup__input_name popup__input_type_error"
                   placeholder="Name"
+                  minlength="2"
+                  maxlength="40"
+                  id="name-input"
+                  required
                 />
+                <span
+                  class="popup__input_error name-input-error popup__error_visible"
+                ></span>
               </label>
               <label class="popup__label">
                 <input
                   name="Profession"
                   type="text"
-                  class="popup__input popup__input_profession"
+                  class="popup__input popup__input_profession popup__input_type_error"
                   placeholder="Profession"
+                  minlength="2"
+                  maxlength="200"
+                  id="profession-input"
+                  required
                 />
+                <span
+                  class="popup__input_error profession-input-error popup__error_visible"
+                ></span>
               </label>
-              <button type="submit" class="popup__button popup__button_save">
+              <button
+                type="submit"
+                class="popup__button popup__button_save popup__button_disabled"
+              >
                 Save
               </button>
             </fieldset>
@@ -47,26 +64,41 @@
       <div class="popup popup-add">
         <div class="popup__container">
           <button class="popup__button popup__button_close"></button>
-          <form class="popup__form popup__form-add">
+          <form class="popup__form popup__form-add" novalidate>
             <h2 class="popup__title">New place</h2>
             <fieldset class="popup__content">
               <label class="popup__label">
                 <input
                   name="title"
                   type="text"
-                  class="popup__input popup__input_title"
+                  class="popup__input popup__input_title popup__input_type_error"
                   placeholder="Title"
+                  minlength="2"
+                  maxlength="30"
+                  id="title-input"
+                  required
                 />
+                <span
+                  class="popup__input_error title-input-error popup__error_visible"
+                ></span>
               </label>
               <label class="popup__label">
                 <input
                   name="Image-url"
-                  type="text"
-                  class="popup__input popup__input_url"
+                  type="url"
+                  class="popup__input popup__input_url popup__input_type_error"
                   placeholder="Image URL"
+                  id="url-input"
+                  required
                 />
+                <span
+                  class="popup__input_error url-input-error popup__error_visible"
+                ></span>
               </label>
-              <button type="submit" class="popup__button popup__button_save">
+              <button
+                type="submit"
+                class="popup__button popup__button_save popup__button_disabled"
+              >
                 Save
               </button>
             </fieldset>
@@ -195,5 +227,6 @@
       </footer>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

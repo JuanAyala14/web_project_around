@@ -82,6 +82,7 @@ formEdit.addEventListener("submit", function (evt) {
   const nameInput = formEdit.querySelector(".popup__input_name");
   const jobInput = formEdit.querySelector(".popup__input_profession");
   const profileName = document.querySelector(".gallery__profile-name");
+
   const profileProfession = document.querySelector(
     ".gallery__profile-profession"
   );
@@ -92,17 +93,46 @@ formEdit.addEventListener("submit", function (evt) {
   popupEdit.classList.remove("popup_open");
 });
 
+// abrir y cerrar popup edit
+
+function openPopup(popup) {
+  popup.classList.add("popup_open");
+  document.addEventListener("keydown", closeByEsc);
+}
+
+//  Función general para cerrar cualquier popup
+function closePopup(popup) {
+  popup.classList.remove("popup_open");
+  document.removeEventListener("keydown", closeByEsc);
+}
+
+// Cierra el popup si se hace clic fuera del contenedor
+function handleOverlayClick(evt) {
+  if (evt.target.classList.contains("popup")) {
+    closePopup(evt.target);
+  }
+}
+
+//  Cierra el popup si se presiona la tecla ESC
+function closeByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_open");
+    if (openedPopup) closePopup(openedPopup);
+  }
+}
+
 document
   .querySelector(".gallery__button-edit")
   .addEventListener("click", function () {
-    popupEdit.classList.add("popup_open");
+    openPopup(popupEdit);
   });
 
 popupEdit
   .querySelector(".popup__button_close")
   .addEventListener("click", function () {
-    popupEdit.classList.remove("popup_open");
+    closePopup(popupEdit);
   });
+popupEdit.addEventListener("mousedown", handleOverlayClick);
 
 // add cards
 const popupAdd = document.querySelector(".popup-add");
@@ -129,14 +159,16 @@ formAdd.addEventListener("submit", function (evt) {
 document
   .querySelector(".gallery__button-add")
   .addEventListener("click", function () {
-    popupAdd.classList.add("popup_open");
+    openPopup(popupAdd);
   });
 
 popupAdd
   .querySelector(".popup__button_close")
   .addEventListener("click", function () {
-    popupAdd.classList.remove("popup_open");
+    closePopup(popupAdd);
   });
+
+popupAdd.addEventListener("mousedown", handleOverlayClick);
 
 const popupImage = document.querySelector(".popup-image");
 const popupImageImg = popupImage.querySelector(".popup__image");
@@ -153,3 +185,7 @@ function openImagePopup(src, title) {
 popupImageClose.addEventListener("click", function () {
   popupImage.classList.remove("popup_open");
 });
+popupImage
+  .querySelector(".popup__button_close")
+  .addEventListener("click", () => closePopup(popupImage));
+popupImage.addEventListener("mousedown", handleOverlayClick);
