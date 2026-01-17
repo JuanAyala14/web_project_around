@@ -1,3 +1,5 @@
+import Card from "../scripts/Card.js";
+
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -25,120 +27,74 @@ const initialCards = [
   },
 ];
 
-const contain = document.querySelector(".gallery__grid");
+const galleryContainer = document.querySelector(".gallery__grid");
 
-// create initial cards
-function createCard(cardData) {
-  const cardElement = document.createElement("div");
-  cardElement.classList.add("gallery__card");
+/* ---------- POPUP IMAGE ---------- */
+const popupImage = document.querySelector(".popup-image");
+const popupImageImg = popupImage.querySelector(".popup__image");
+const popupImageCaption = popupImage.querySelector(".popup__caption");
 
-  const image = document.createElement("img");
-  image.src = cardData.link;
-  image.alt = cardData.name;
-  image.classList.add("gallery__image");
-
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("gallery__button_delete");
-  deleteButton.addEventListener("click", function () {
-    cardElement.remove();
-  });
-
-  const cardLabel = document.createElement("div");
-  cardLabel.classList.add("gallery__content");
-
-  const title = document.createElement("p");
-  title.textContent = cardData.name;
-  title.classList.add("gallery__paragraph");
-
-  const likeButton = document.createElement("button");
-  likeButton.classList.add("gallery__button_like");
-
-  likeButton.addEventListener("click", function () {
-    likeButton.classList.toggle("gallery__button_like_active");
-  });
-
-  image.addEventListener("click", function () {
-    openImagePopup(cardData.link, cardData.name);
-  });
-
-  cardLabel.append(title, likeButton);
-  cardElement.append(image, deleteButton, cardLabel);
-
-  return cardElement;
+function openImagePopup(src, title) {
+  popupImageImg.src = src;
+  popupImageImg.alt = title;
+  popupImageCaption.textContent = title;
+  popupImage.classList.add("popup_open");
 }
 
+/* ---------- INITIAL CARDS ---------- */
 initialCards.forEach((cardData) => {
-  const card = createCard(cardData);
-  contain.append(card);
+  const card = new Card(cardData, openImagePopup);
+  galleryContainer.append(card.generateCard());
 });
 
-// edit profile
+/* ---------- EDIT PROFILE ---------- */
 const popupEdit = document.querySelector(".popup-edit");
 const formEdit = popupEdit.querySelector(".popup__form-edit");
 
-formEdit.addEventListener("submit", function (evt) {
+formEdit.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
   const nameInput = formEdit.querySelector(".popup__input_name");
   const jobInput = formEdit.querySelector(".popup__input_profession");
-  const profileName = document.querySelector(".gallery__profile-name");
 
-  const profileProfession = document.querySelector(
-    ".gallery__profile-profession"
-  );
-
-  profileName.textContent = nameInput.value;
-  profileProfession.textContent = jobInput.value;
+  document.querySelector(".gallery__profile-name").textContent =
+    nameInput.value;
+  document.querySelector(".gallery__profile-profession").textContent =
+    jobInput.value;
 
   popupEdit.classList.remove("popup_open");
 });
 
-// abrir y cerrar popup edit
-
+/* ---------- POPUPS GENERALES ---------- */
 function openPopup(popup) {
   popup.classList.add("popup_open");
-  document.addEventListener("keydown", closeByEsc);
 }
 
-//  Función general para cerrar cualquier popup
 function closePopup(popup) {
   popup.classList.remove("popup_open");
-  document.removeEventListener("keydown", closeByEsc);
 }
 
-// Cierra el popup si se hace clic fuera del contenedor
 function handleOverlayClick(evt) {
   if (evt.target.classList.contains("popup")) {
     closePopup(evt.target);
   }
 }
 
-//  Cierra el popup si se presiona la tecla ESC
-function closeByEsc(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_open");
-    if (openedPopup) closePopup(openedPopup);
-  }
-}
-
 document
   .querySelector(".gallery__button-edit")
-  .addEventListener("click", function () {
-    openPopup(popupEdit);
-  });
+  .addEventListener("click", () => openPopup(popupEdit));
 
 popupEdit
   .querySelector(".popup__button_close")
-  .addEventListener("click", function () {
-    closePopup(popupEdit);
-  });
+  .addEventListener("click", () => closePopup(popupEdit));
+
 popupEdit.addEventListener("mousedown", handleOverlayClick);
 
-// add cards
+/* ---------- ADD CARD ---------- */
 const popupAdd = document.querySelector(".popup-add");
 const formAdd = popupAdd.querySelector(".popup__form-add");
 
-formAdd.addEventListener("submit", function (evt) {
+formAdd.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
   const titleInput = formAdd.querySelector(".popup__input_title");
@@ -149,43 +105,19 @@ formAdd.addEventListener("submit", function (evt) {
     link: urlInput.value,
   };
 
-  const newCard = createCard(newCardData);
-  contain.prepend(newCard);
+  const card = new Card(newCardData, openImagePopup);
+  galleryContainer.prepend(card.generateCard());
 
   formAdd.reset();
-  popupAdd.classList.remove("popup_open");
+  closePopup(popupAdd);
 });
 
 document
   .querySelector(".gallery__button-add")
-  .addEventListener("click", function () {
-    openPopup(popupAdd);
-  });
+  .addEventListener("click", () => openPopup(popupAdd));
 
 popupAdd
   .querySelector(".popup__button_close")
-  .addEventListener("click", function () {
-    closePopup(popupAdd);
-  });
+  .addEventListener("click", () => closePopup(popupAdd));
 
 popupAdd.addEventListener("mousedown", handleOverlayClick);
-
-const popupImage = document.querySelector(".popup-image");
-const popupImageImg = popupImage.querySelector(".popup__image");
-const popupImageCaption = popupImage.querySelector(".popup__caption");
-const popupImageClose = popupImage.querySelector(".popup__button_close");
-
-function openImagePopup(src, title) {
-  popupImageImg.src = src;
-  popupImageImg.alt = title;
-  popupImageCaption.textContent = title;
-  popupImage.classList.add("popup_open");
-}
-
-popupImageClose.addEventListener("click", function () {
-  popupImage.classList.remove("popup_open");
-});
-popupImage
-  .querySelector(".popup__button_close")
-  .addEventListener("click", () => closePopup(popupImage));
-popupImage.addEventListener("mousedown", handleOverlayClick);
