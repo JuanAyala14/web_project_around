@@ -29,7 +29,7 @@ const initialCards = [
 
 const galleryContainer = document.querySelector(".gallery__grid");
 
-/* ---------- POPUP IMAGE ---------- */
+// POP UP IMAGE //
 const popupImage = document.querySelector(".popup-image");
 const popupImageImg = popupImage.querySelector(".popup__image");
 const popupImageCaption = popupImage.querySelector(".popup__caption");
@@ -41,13 +41,13 @@ function openImagePopup(src, title) {
   popupImage.classList.add("popup_open");
 }
 
-/* ---------- INITIAL CARDS ---------- */
+
 initialCards.forEach((cardData) => {
   const card = new Card(cardData, openImagePopup);
   galleryContainer.append(card.generateCard());
 });
 
-/* ---------- EDIT PROFILE ---------- */
+// EDIT PROFILE //
 const popupEdit = document.querySelector(".popup-edit");
 const formEdit = popupEdit.querySelector(".popup__form-edit");
 
@@ -65,20 +65,9 @@ formEdit.addEventListener("submit", (evt) => {
   popupEdit.classList.remove("popup_open");
 });
 
-/* ---------- POPUPS GENERALES ---------- */
-function openPopup(popup) {
-  popup.classList.add("popup_open");
-}
+//           POP UPS       //
+import { openPopup, closePopup, handleOverlayClick } from "../scripts/utils.js";
 
-function closePopup(popup) {
-  popup.classList.remove("popup_open");
-}
-
-function handleOverlayClick(evt) {
-  if (evt.target.classList.contains("popup")) {
-    closePopup(evt.target);
-  }
-}
 
 document
   .querySelector(".gallery__button-edit")
@@ -93,7 +82,7 @@ popupEdit
 
 popupEdit.addEventListener("mousedown", handleOverlayClick);
 
-/* ---------- ADD CARD ---------- */
+//  ADD CARD //
 const popupAdd = document.querySelector(".popup-add");
 const formAdd = popupAdd.querySelector(".popup__form-add");
 
