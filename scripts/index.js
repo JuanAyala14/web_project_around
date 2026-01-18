@@ -82,7 +82,10 @@ function handleOverlayClick(evt) {
 
 document
   .querySelector(".gallery__button-edit")
-  .addEventListener("click", () => openPopup(popupEdit));
+  .addEventListener("click", () => {
+    editFormValidator.resetValidation();
+    openPopup(popupEdit);
+  });
 
 popupEdit
   .querySelector(".popup__button_close")
@@ -114,10 +117,34 @@ formAdd.addEventListener("submit", (evt) => {
 
 document
   .querySelector(".gallery__button-add")
-  .addEventListener("click", () => openPopup(popupAdd));
+  .addEventListener("click", () => {
+    addFormValidator.resetValidation();
+    openPopup(popupAdd);
+  });
 
 popupAdd
   .querySelector(".popup__button_close")
   .addEventListener("click", () => closePopup(popupAdd));
 
 popupAdd.addEventListener("mousedown", handleOverlayClick);
+
+// FORM VALIDATION //
+import FormValidator from "../scripts/FormValidator.js";
+
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button_save",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+const editForm = document.querySelector(".popup__form-edit");
+const addForm = document.querySelector(".popup__form-add");
+
+const editFormValidator = new FormValidator(validationConfig, editForm);
+const addFormValidator = new FormValidator(validationConfig, addForm);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
