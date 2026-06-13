@@ -1,6 +1,6 @@
 # Tripleten web_project_around
 
-This website is the seventh project in the Tripleten bootcamp in which the different knowledge acquired in HTML, CSS and JavaScript principles were used to create a responsive page, with functional buttons that lead to a form for editing the user profile and subsequently adding, liking and removing photos.
+This project is a modular, object-oriented front-end application built with JavaScript. It allows users to manage a gallery of image cards, edit their profile information, and interact with multiple modal windows (popups). The project follows modern JavaScript best practices, including separation of concerns, reusable components, and clean architecture.
 
 # Features
 
